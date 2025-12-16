@@ -15,10 +15,10 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-semibold mb-4">Popular States</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/texas" className="hover:text-primary">Texas Calculator</Link></li>
-                            <li><Link href="/florida" className="hover:text-primary">Florida Calculator</Link></li>
-                            <li><Link href="/california" className="hover:text-primary">California Calculator</Link></li>
-                            <li><Link href="/new-york" className="hover:text-primary">New York Calculator</Link></li>
+                            <li><Link href="/texas/" className="hover:text-primary">Texas Calculator</Link></li>
+                            <li><Link href="/florida/" className="hover:text-primary">Florida Calculator</Link></li>
+                            <li><Link href="/california/" className="hover:text-primary">California Calculator</Link></li>
+                            <li><Link href="/new-york/" className="hover:text-primary">New York Calculator</Link></li>
                         </ul>
                     </div>
 
