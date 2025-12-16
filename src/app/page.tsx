@@ -1,7 +1,6 @@
 import { TitleCalculator } from '@/components/calculator/TitleCalculator';
 import { states } from '@/data/states';
 import Link from 'next/link';
-import { StateSelector } from '@/components/home/StateSelector';
 import { MapPin } from 'lucide-react';
 
 export default function Home() {
@@ -21,15 +20,12 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Quick State Selector */}
-        <div className="max-w-md mx-auto p-1 bg-white rounded-xl shadow-lg border">
-          <StateSelector />
-        </div>
+        {/* Quick State Selector - Removed in favor of Calculator Navigation */}
       </section>
 
       {/* Calculator Section */}
       <section>
-        <TitleCalculator />
+        <TitleCalculator navigateOnSelect={true} />
       </section>
 
       {/* Popular States Grid */}

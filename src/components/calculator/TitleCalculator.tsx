@@ -14,11 +14,15 @@ import { Separator } from '@/components/ui/separator';
 import { DollarSign, Building2, ShieldCheck, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { useRouter } from 'next/navigation';
+
 interface TitleCalculatorProps {
     initialState?: string;
+    navigateOnSelect?: boolean;
 }
 
-export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }) => {
+export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState, navigateOnSelect = false }) => {
+    const router = useRouter();
     const [input, setInput] = useState<CalculatorInput>({
         state: initialState || 'texas',
         purchasePrice: 300000,
@@ -43,6 +47,14 @@ export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }
         return () => clearTimeout(timer);
     }, [input]);
 
+    const handleStateChange = (val: string) => {
+        if (navigateOnSelect) {
+            router.push(`/${val}`);
+        } else {
+            setInput({ ...input, state: val });
+        }
+    };
+
     return (
         <div className="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Input Section */}
@@ -62,7 +74,7 @@ export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }
                                 <Label htmlFor="state" className="text-sm font-medium text-gray-700">State</Label>
                                 <Select
                                     value={input.state}
-                                    onValueChange={(val) => setInput({ ...input, state: val })}
+                                    onValueChange={handleStateChange}
                                 >
                                     <SelectTrigger id="state" className="h-11 bg-gray-50/50 border-gray-200 focus:ring-2 focus:ring-primary/20 transition-all">
                                         <SelectValue placeholder="Select State" />
