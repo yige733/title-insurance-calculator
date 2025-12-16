@@ -12,8 +12,9 @@ export async function generateStaticParams() {
 }
 
 // Dynamic Metadata
-export async function generateMetadata({ params }: { params: { state: string } }): Promise<Metadata> {
-    const stateConfig = states.find((s) => s.slug === params.state);
+export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
+    const { state } = await params;
+    const stateConfig = states.find((s) => s.slug === state);
 
     if (!stateConfig) {
         return {
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }: { params: { state: string } }
 
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 
-export default function StatePage({ params }: { params: { state: string } }) {
-    const stateConfig = states.find((s) => s.slug === params.state);
+export default async function StatePage({ params }: { params: Promise<{ state: string }> }) {
+    const { state } = await params;
+    const stateConfig = states.find((s) => s.slug === state);
 
     if (!stateConfig) {
         notFound();
