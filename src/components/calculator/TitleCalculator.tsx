@@ -57,24 +57,26 @@ export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="state" className="text-sm font-medium text-gray-700">State</Label>
-                            <Select
-                                value={input.state}
-                                onValueChange={(val) => setInput({ ...input, state: val })}
-                            >
-                                <SelectTrigger id="state" className="h-11 bg-gray-50/50 border-gray-200 focus:ring-2 focus:ring-primary/20 transition-all">
-                                    <SelectValue placeholder="Select State" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {states.map((state) => (
-                                        <SelectItem key={state.slug} value={state.slug}>
-                                            {state.name}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
+                        {!initialState && (
+                            <div className="space-y-2">
+                                <Label htmlFor="state" className="text-sm font-medium text-gray-700">State</Label>
+                                <Select
+                                    value={input.state}
+                                    onValueChange={(val) => setInput({ ...input, state: val })}
+                                >
+                                    <SelectTrigger id="state" className="h-11 bg-gray-50/50 border-gray-200 focus:ring-2 focus:ring-primary/20 transition-all">
+                                        <SelectValue placeholder="Select State" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {states.map((state) => (
+                                            <SelectItem key={state.slug} value={state.slug}>
+                                                {state.name}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        )}
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
