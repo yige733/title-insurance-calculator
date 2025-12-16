@@ -32,7 +32,7 @@ export default function Home() {
           {states.map((state) => (
             <Link
               key={state.slug}
-              href={`/${state.slug}`}
+              href={`/${state.slug}/`}
               className="group p-4 bg-white rounded-lg border hover:border-primary hover:shadow-md transition-all flex items-center justify-between"
             >
               <span className="font-medium text-gray-700 group-hover:text-primary">{state.name}</span>
