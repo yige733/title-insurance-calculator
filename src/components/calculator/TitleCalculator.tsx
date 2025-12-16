@@ -46,7 +46,7 @@ export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }
     return (
         <div className="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Input Section */}
-            <Card className="lg:col-span-7 border shadow-sm bg-white">
+            <Card className="lg:col-span-7 border shadow-sm bg-white min-h-[500px] flex flex-col">
                 <CardHeader className="pb-4">
                     <CardTitle className="text-xl font-semibold text-gray-900">
                         Property Details
@@ -113,7 +113,7 @@ export const TitleCalculator: React.FC<TitleCalculatorProps> = ({ initialState }
             {/* Result Section - Sticky on Desktop */}
             <div className="lg:col-span-5 lg:sticky lg:top-24">
                 <Card className={cn(
-                    "border-none shadow-xl overflow-hidden transition-all duration-300",
+                    "border-none shadow-xl overflow-hidden transition-all duration-300 min-h-[500px] flex flex-col",
                     "bg-slate-900 text-white ring-1 ring-white/10"
                 )}>
                     <CardHeader className="bg-white/5 pb-6 border-b border-white/10">
