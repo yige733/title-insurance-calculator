@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: { params: { state: string } }
     };
 }
 
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+
 export default function StatePage({ params }: { params: { state: string } }) {
     const stateConfig = states.find((s) => s.slug === params.state);
 
@@ -45,7 +47,11 @@ export default function StatePage({ params }: { params: { state: string } }) {
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <div className="max-w-4xl mx-auto space-y-12">
+            <div className="max-w-4xl mx-auto space-y-8">
+                <Breadcrumbs items={[
+                    { label: `${stateConfig.name} Calculator`, href: `/${stateConfig.slug}` }
+                ]} />
+
                 {/* Header Section */}
                 <div className="text-center space-y-4">
                     <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
